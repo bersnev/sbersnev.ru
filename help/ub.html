@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>help me please</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+        <link href="./1/bootstrap.min.css" rel="stylesheet">
+        <link href="./1/asciidoctor.css" rel="stylesheet">
+        <link href="./1/base.css" rel="stylesheet">
+        <link href="./1/prettify.css" rel="stylesheet">
+
+
+<body onload="prettyPrint()">
+<div id="wrap">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://sbersnev.ru/help.html">Главная</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="https://sbersnev.ru/help/git.html">GIT</a></li>
+              <li><a href="https://sbersnev.ru/help/docker.html">Docker</a></li>
+              <li><a href="https://sbersnev.ru/help/kub.html">Kubernetes</a></li>
+              <li><a href="https://sbersnev.ru/help/ub.html">Ubuntu</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>    <div class="container">
+    <div class="page-header">
+        <h1>Шпаргалка Ubuntu</h1>
+    </div>
+
+    <p></p><h3>Привелегии</h3>
+<ul>
+
+    <p><code>sudo command</code> - запустить команду как root</p>
+    <p><code>sudo -s</code> - открыть оболочку root<br></p>
+    <p><code>sudo -s -u user</code> - открыть оболочку как пользователь<br></p>
+    <p><code>sudo -k</code> - восстановить пароль sudo<br></p>
+    <p><code>sudo visudo</code> - редактировать /etc/sudoers<br></p>
+    <p><code>passwd</code> - изменить ваш пароль<br></p>
+</ul>
+
+<h3>Сеть</h3>
+<ul>
+  <p><code>ifconfig</code> - показать информацию о сети</p>
+  <p><code>iwconfig</code> - показать информацию о беспроводной сети<br></p>
+  <p><code>sudo iwlist scan</code> - поиск беспроводных сетей<br></p>
+  <p><code>sudo /etc/init.d/networking restart</code> - перезапустить сеть<br></p>
+  <p><code>/etc/network/interfaces</code> - файл для ручной настройки сети<br></p>
+  <p><code>ifup interface</code> - включить интерфейс<br></p>
+  <p><code>ifdown interface</code> - отключить интерфейс</p>
+  <p><code>whois domain</code> - получить информацию whois для domain<br></p>
+  <p><code>wget file</code> - скачать file<br></p>
+  <p><code>ip link show</code> - отобразить состояние всех интерфейсов<br></p>
+  <p><code>cat /proc/net/dev</code> - показать сетевые интерфейсы и статистику по ним<br></p>
+  <p><code>dig domain</code> - получить DNS информацию domain<br></p>
+</ul>
+
+<h3>Управление пакетами</h3>
+<ul>
+  <p><code>apt-get update</code> - обновить доступные обновления</p>
+  <p><code>apt-get upgrade</code> - обновить все пакеты<br></p>
+  <p><code>apt-get install pkg</code> - установить пакет (pkg)<br></p>
+  <p><code>apt-get purge pkg</code> - удалить пакет (pkg)<br></p>
+  <p><code>apt-get autoremove</code> - удалить устаревшие пакеты<br></p>
+  <p><code>apt-get -f install</code> - попробовать исправить битые пакеты<br></p>
+</ul>
+
+<h3>Система</h3>
+<ul>
+  <p><code>lsb_release -a</code> - получить версию Ubuntu</p>
+  <p><code>date</code> - отображает текущую дату и время</p>
+  <p><code>uname -r</code> - получить версию ядра<br></p>
+  <p><code>uname -a</code> - получить всю информацию о ядре<br></p>
+  <p><code>arch</code> - отобразить архитектуру компьютера<br></p>
+  <p><code>cat /proc/cpuinfo</code> - показать информацию о ЦПУ<br></p>
+  <p><code>cat /proc/meminfo</code> - проверить использование памяти<br></p>
+  <p><code>df -h</code> - информация об использовании дисков<br></p>
+  <p><code>ps</code> - процессы, в настоящее время работающие на системе<br></p>
+  <p><code>hdparm -i /dev/sda</code> - вывести характеристики жесткого диска<br></p>
+</ul>
+
+<h3>Файловые команды</h3>
+<ul>
+  <p><code>cd /home</code> - перейти в директорию '/home'</p>
+  <p><code>cd ..</code> - перейти в директорию уровнем выше<br></p>
+  <p><code>cd</code> - перейти в домашнюю директорию<br></p>
+  <p><code>cd -</code> - перейти в директорию, в которой находились до перехода в текущую директорию<br></p>
+  <p><code>mkdir dir1</code> - создать директорию с именем 'dir1'<br></p>
+  <p><code>rmdir dir1</code> - удалить директорию с именем 'dir1'<br></p>
+  <p><code>rm -f file1</code> - удалить файл с именем 'file1<br></p>
+  <p><code>mv dir1 new_dir</code> - переименовать или переместить файл или директорию<br></p>
+  <p><code>cp file1 file2</code> - сопировать файл file1 в файл file2<br></p>
+  <p><code>cp dir/* .</code> - копировать все файлы директории dir в текущую директорию<br></p>
+  <p><code>cp -a /tmp/dir1 .</code> - копировать директорию dir1 со всем содержимым в текущую директорию<br></p>
+  <p><code>cp -a dir1 dir2</code> - копировать директорию dir1 в директорию dir2<br></p>
+</ul>
+
+<h3>Пользователи и группы</h3>
+<ul>
+  <p><code>whoami</code> - имя, под которым вы залогинены</p>
+  <p><code>groupadd group_name</code> - создать новую группу с именем group_name<br></p>
+  <p><code>groupdel group_name</code> - удалить группу group_name<br></p>
+  <p><code>useradd user1</code> - создать пользователя user1<br></p>
+  <p><code>userdel -r user1</code> - удалить пользователя user1 и его домашний каталог<br></p>
+  <p><code>passwd user1</code> - сменить пароль пользователя user1 (только root)<br></p>
+</ul>
