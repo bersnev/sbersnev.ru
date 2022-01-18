@@ -97,6 +97,8 @@
   <p><code>df -h</code> - информация об использовании дисков<br></p>
   <p><code>ps</code> - процессы, в настоящее время работающие на системе<br></p>
   <p><code>hdparm -i /dev/sda</code> - вывести характеристики жесткого диска<br></p>
+  <p><code>man ls</code> - help по работе команды ls<br></p>
+  <p><code>sudo chmod 777 /var/www/html</code> - дать все права на папку(755 все для владельца, остальным только чтение и выполнение)<br></p>
 </ul>
 
 <h3>Файловые команды</h3>
@@ -107,7 +109,15 @@
   <p><code>cd -</code> - перейти в директорию, в которой находились до перехода в текущую директорию<br></p>
   <p><code>mkdir dir1</code> - создать директорию с именем 'dir1'<br></p>
   <p><code>rmdir dir1</code> - удалить директорию с именем 'dir1'<br></p>
+  <p><code>touch help.txt</code> - создать текстовый файл с именем 'help'<br></p>
   <p><code>rm -f file1</code> - удалить файл с именем 'file1<br></p>
+  <p><code>grep -i serg /user/ubuntu/help.txt</code> - найти пользователя serg в файле<br></p>
+  <p><code>grep -i -B4 serg /user/ubuntu/help.txt</code> - найти пользователя serg в файле и вывести строку с ним<br></p>
+  <p><code>grep -r "serg" /user/ubuntu/</code> - найти serg и производные в файлах папки ubuntu и вывести строку с ним<br></p>
+  <p><code>find . -iname "TeStFile*"</code> - Найти в текущей папке файл с именем TeStFile<br></p>
+  <p><code>find / -size +50M -size -100M</code> - Найти файлы от пятидесяти до ста мегабайт<br></p>
+  <p><code>tar -cvzf archive.tar.gz /home/test</code> - заархивировать папку test<br></p>
+  <p><code>tar -xvf archive.tar.gz</code> - разархивировать файл archive.tar.gz<br></p>
   <p><code>mv dir1 new_dir</code> - переименовать или переместить файл или директорию<br></p>
   <p><code>cp file1 file2</code> - сопировать файл file1 в файл file2<br></p>
   <p><code>cp dir/* .</code> - копировать все файлы директории dir в текущую директорию<br></p>
