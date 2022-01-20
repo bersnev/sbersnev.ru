@@ -60,4 +60,4 @@ jobs:
 #    - run: npm ci
  #   - run: npm run build
       # Deploy 
-    - run: rsync -e "ssh -i $HOME/.ssh/AWS_SECRET_KEY" --archive --compress --delete . bersnev@18.185.149.57:/var/www/html/
+    - run: rsync -e "ssh -i $HOME/.ssh/AWS_SECRET_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@18.185.149.57:/var/www/html/
