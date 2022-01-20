@@ -52,10 +52,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ env.AWS_REGION }}
       # Setup key
-#    - run: set -eu
- #   - run: mkdir "$HOME/.ssh"
-  #  - run: echo "$" > "$HOME/.ssh/AWS_SECRET_KEY"
-   # - run: chmod 600 "$HOME/.ssh/AWS_SECRET_KEY"
+    - run: set -eu
+    - run: mkdir "$HOME/.ssh"
+    - run: echo "$" > "$HOME/.ssh/AWS_SECRET_KEY"
+    - run: chmod 600 "$HOME/.ssh/AWS_SECRET_KEY"
       # Build
 #    - run: npm ci
  #   - run: npm run build
