@@ -57,7 +57,7 @@ jobs:
     - run: echo "${{ secrets.AWS_ACCESS_KEY }}" > "$HOME/.ssh/AWS_SECRET_KEY"
     - run: chmod 600 "$HOME/.ssh/AWS_SECRET_KEY"
       # Build
-    - run: npm ci
+    - run: npm i
     - run: npm run build
       # Deploy 
     - run: rsync -e "ssh -i $HOME/.ssh/AWS_SECRET_KEY -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@18.185.149.57:/var/www/html/
