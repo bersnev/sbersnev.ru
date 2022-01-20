@@ -60,4 +60,4 @@ jobs:
 #    - run: npm ci
  #   - run: npm run build
       # Deploy 
-    - run: rsync -e "ssh -i ${{ secrets.aws_frankfurt }} -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@sbersnev.ru:/var/www/html/
+    - run: rsync -e "ssh -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@sbersnev.ru:/var/www/html/
