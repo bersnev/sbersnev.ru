@@ -26,4 +26,4 @@ jobs:
     - run: chmod 600 "$HOME/.ssh/AWS_FRANKFURT"
 
       # Deploy 
-    - run: rsync -Oe "ssh -i $HOME/.ssh/AWS_FRANKFURT -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@18.185.149.57:/var/www/html/
+    - run: rsync -Oe "ssh -i $HOME/.ssh/AWS_FRANKFURT -o StrictHostKeyChecking=no" --archive --compress --delete . bersnev@sbersnev.ru:/var/www/html/
