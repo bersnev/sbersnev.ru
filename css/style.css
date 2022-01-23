@@ -419,3 +419,19 @@ sm {
   font-weight: 600;
   margin: 15px 0;
 }
+
+@media(max-width: 767px) {
+    #certificate,
+    #certificate2 {
+          margin-left: 0px;
+    }
+    #certificate2 img,
+    #certificate img {
+        width: 100%;
+    }
+
+    #certificate2:hover img,
+    #certificate:hover img {
+        width: 100%;
+    }
+}
