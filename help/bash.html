@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>help me please</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="JBake">
+
+        <link href="./1/bootstrap.min.css" rel="stylesheet">
+        <link href="./1/asciidoctor.css" rel="stylesheet">
+        <link href="./1/base.css" rel="stylesheet">
+        <link href="./1/prettify.css" rel="stylesheet">
+
+<body onload="prettyPrint()">
+<div id="wrap">
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://sbersnev.ru/help.html">Главная</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="https://sbersnev.ru/help/git.html">GIT</a></li>
+              <li><a href="https://sbersnev.ru/help/docker.html">Docker</a></li>
+              <li><a href="https://sbersnev.ru/help/kub.html">Kubernetes</a></li>
+              <li><a href="https://sbersnev.ru/help/ub.html">Ubuntu</a></li>
+              <li><a href="https://sbersnev.ru/help/bash.html">Bash</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>    <div class="container">
+    <div class="page-header">
+        <h1>Bourne Again SHell</h1>
+    </div>
+
+    <p></p><h3>Получение информации</h3>
+<ul>
+  <p><code>man</code> - выводит руководство пользователя (справку) по команде</p>
+  <p><code>pwd</code> - выводит сведения о директории в которой находишься<br></p>
+  <p><code>ls</code> - выводит содержимое директории<br></p>
+  <p><code>ps</code> - позволяет просматривать сведения о работающих процессах<br></p>
+</ul>
+
+
+<h3>Манипуляции с файловой системой</h3>
+<ul>
+  <p><code>cd</code> - изменение рабочей директории</p>
+  <p><code>cd . </code> - текущая директория<br></p>
+  <p><code>cd ..</code> - переход к родительской папке<br></p>
+
+  <p><code>touch</code> - создание файла<br></p>
+  <p><code>mkdir</code> - создание директории<br></p>
+  <p><code>cp</code> - копирование файла<br></p>
+  <p><code>mv</code> - перемещение или удаление файла<br></p>
+  <p><code>ln</code> - создание ссылки<br></p>
+</ul>
+
+<h3>bash команды для управления</h3>
+<ul>
+  <p><code>;</code> - выполнение команды одна за другой</p>
+  <p><code>&&</code> - команда справа не будет выполняться, если команда слева не выполнена успешно<br></p>
+  <p><code>&</code> - свернуть подобный процесс в фон, используйте & в конце команды. Тогда процесс выполняется в фоне, не блокируя ввод в окно терминала<br></p>
+  <p><code>  | </code> - передает результат выполненной инструкции следующему пайпу<br></p>
+  <p><code>ls -l | grep .md$ | less</code> - command1 | command2 | command3<br></p>
+  <p><code>  || </code> - Двойной пайп (ИЛИ) - вторая команды будет выполнена только в случае НЕУДАЧНОГО заверения первой команды<br></p>
+
+
+</ul>
