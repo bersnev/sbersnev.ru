@@ -43,20 +43,117 @@
     <div class="page-header">
         <h1>Команды Kubernetes</h1>
     </div>
+
+    <p></p><h3>Автодополнение ввода для Kubectl</h3>
+<ul>
+<p></p><h4>BASH</h4>
+    <p><code>source <(kubectl completion bash)</code> - настройка автодополнения в текущую сессию bash, предварительно должен быть установлен пакет bash-completion</p>
+    <p><code>echo "source <(kubectl completion bash)" >> ~/.bashrc</code> - добавление автодополнения autocomplete постоянно в командную оболочку bash<br></p>
+    <p> Вы также можете использовать короткий псевдоним для kubectl, который можно интегрировать с автодополнениями:</p>
+    <code>alias k=kubectl</code><br>
+    <code>complete -F __start_kubectl k</code><br>
+</ul>
+
+<ul>
+<p></p><h4>ZSH</h4>
+    <p><code>source <(kubectl completion zsh)</code> - настройка автодополнения в текущую сессию zsh</p>
+    <p><code>echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc</code> - add autocomplete permanently to your zsh shell<br></p>
+</ul>
+
+<h3>Создание объектов</h3>
+<ul>
+  <p><code>kubectl apply -f ./my-manifest.yaml</code> - создать ресурсы</p>
+  <p><code>kubectl apply -f ./my1.yaml -f ./my2.yaml</code> - создать ресурсы из нескольких файлов<br></p>
+  <p><code>kubectl apply -f ./dir</code> - создать ресурсы из всех файлов манифеста в директории<br></p>
+  <p><code>kubectl apply -f https://git.io/vPieo</code> - создать ресурсы из URL-адреса<br></p>
+  <p><code>kubectl create deployment nginx --image=nginx</code> - запустить один экземпляр nginx<br></p>
+  <p><code>kubectl explain pods</code> - посмотреть документацию по манифестам подов<br></p>
+</ul>
+
+<h3>Просмотр и поиск ресурсов</h3>
+<ul>
+  <p><code>kubectl get services</code> - Вывести все сервисы в пространстве имён</p>
+  <p><code>kubectl get pods --all-namespaces</code> - Вывести все поды во всех пространств имён<br></p>
+  <p><code>kubectl get pods -o wide</code> - Вывести все поды в текущем пространстве имён с подробностями<br></p>
+  <p><code>kubectl get deployment my-dep</code> - Вывести определённое развёртывание<br></p>
+  <p><code>kubectl get pods</code> - Вывести все поды в пространстве имён<br></p>
+  <p><code>kubectl get pod my-pod -o yaml</code> - Получить информацию по поду в формате YAML<br></p>
+  <p><code>kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'</code> - Вывести поды, отсортированные по количеству перезагрузок<br></p>
+  <p><code>kubectl get pods --field-selector=status.phase=Running</code> - Получить все запущенные поды в пространстве имён<br></p>
+  <p><code>kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="ExternalIP")].address}'</code> - Получить внешние IP-адреса (ExternalIP) всех узлов</p>
+  <p><code>kubectl get pods --show-labels</code> - Показать метки всех подов (или любого другого объекта Kubernetes, которым можно прикреплять метки)</p>
+  <p><code>kubectl get events --sort-by=.metadata.creationTimestamp</code> - Вывести события, отсортированные по временной метке</p>
+</ul>
+
+<h3>Обновление ресурсов</h3>
+<ul>
+  <p><code>kubectl set image deployment/frontend www=image:v2</code> - Плавающее обновление контейнеров "www" развёртывания "frontend", обновление образа</p>
+  <p><code>kubectl rollout history deployment/frontend</code> - Проверить историю развёртывания, включая ревизии</p>
+  <p><code>kubectl rollout undo deployment/frontend</code> - Откатиться к предыдущему развёртыванию</p>
+  <p><code>kubectl rollout undo deployment/frontend --to-revision=2</code> - Откатиться к определённой ревизии</p>
+  <p><code>kubectl rollout status -w deployment/frontend</code> - Отслеживать статус плавающего развёртывания "frontend" до его завершения</p>
+  <p><code>kubectl rollout restart deployment/frontend</code> - Перезапуск плавающего развёртывания "frontend"</p>
+  <p><code>kubectl replace --force -f ./pod.json</code> - Принудительно заменить, удалить, а затем пересоздать ресурс. Это приведет к простою приложения</p>
+  <p><code>kubectl expose rc nginx --port=80 --target-port=8000</code> - <br>Создать сервис с реплицированным nginx на порту 80, который подключается к контейнерам на порту 8000</p>
+  <p><code>kubectl label pods my-pod new-label=awesome</code> - Добавить метку</p>
+  <p><code>kubectl annotate pods my-pod icon-url=http://goo.gl/XXBTWq</code> - Добавить аннотацию</p>
+  <p><code>kubectl autoscale deployment foo --min=2 --max=10</code> - Автоматически промасштабировать развёртывание "foo"</p>
+  <p><code>kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}'</code> - Обновить часть узла</p>
+  <p><code>kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'</code> - <br>Обновить образ контейнера; необходимо указать spec.containers[*].name, чтобы произвести слияние</p>
+  <p><code>kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"new image"}]'</code> - <br>Обновить образ контейнера через json-патч с позиционными массивами</p>
+  <p><code>kubectl patch deployment valid-deployment  --type json   -p='[{"op": "remove", "path": "/spec/template/spec/containers/0/livenessProbe"}]'</code> - <br>Удалить развертывание livenessProbe через json-патч с позиционными массивами</p>
+  <p><code>kubectl patch sa default --type='json' -p='[{"op": "add", "path": "/secrets/1", "value": {"name": "whatever" } }]'</code> - <br>Добавить нового элемента в позиционный массив</p>
+</ul>
+
+<h3>Редактирование ресурсов</h3>
+<ul>
+  <p><code>kubectl edit svc/docker-registry</code> - Отредактировать сервис docker-registry</p>
+  <p><code>KUBE_EDITOR="nano" kubectl edit svc/docker-registry</code> - Использовать другой редактор</p>
+</ul>
+
+<h3>Масштабирование ресурсов</h3>
+<ul>
+  <p><code>kubectl scale --replicas=3 rs/foo</code> - Промасштабировать набор реплик (replicaset) 'foo' до 3</p>
+  <p><code>kubectl scale --replicas=3 -f foo.yaml</code> - Промасштабировать ресурс в "foo.yaml" до 3</p>
+  <p><code>kubectl scale --current-replicas=2 --replicas=3 deployment/mysql</code> - Если количество реплик в развёртывании mysql равен 2, промасштабировать его до 3</p>
+  <p><code>kubectl scale --replicas=5 rc/foo rc/bar rc/baz</code> - Промасштабировать несколько контроллеров репликации</p>
+</ul>
+
+<h3>Удаление ресурсов</h3>
+<ul>
+  <p><code>kubectl delete -f ./pod.json</code> - Удалить под по типу и имени в pod.json</p>
+  <p><code>kubectl delete pod,service baz foo</code> - Удалить поды и сервисы с одноимёнными именам "baz" и "foo"</p>
+  <p><code>kubectl delete pods,services -l name=myLabel</code> - Удалить поды и сервисы с именем метки myLabel</p>
+  <p><code>kubectl -n my-ns delete pod,svc --all</code> - Удалить все поды и сервисы в пространстве имен my-ns</p>
+  <p><code>kubectl get pods  -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}' | xargs  kubectl delete -n mynamespace pod</code> - <br>Удалить все поды, соответствующие pattern1 или pattern2 в awk</p>
+</ul>
+
+<h3>Работа с запущенными подами</h3>
+<ul>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+</ul>
+
 <!--
-    <p></p><h3>Установка</h3>
+<h3></h3>
 <ul>
-
-    <p><code>sudo apt-get update</code></p>
-    <p><code>sudo apt-get install git</code><br></p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
 </ul>
 
-
-<h3>Первоначальные настройки</h3>
-<ul>
-  <p><code>git config --global user.name "Bersnev Sergey"</code> - имя пользователя</p>
-  <p><code>git config --global user.email bersnev@tut.by</code> - e-mail<br></p>
-  <p><code>git config --global core.editor "code --wait"</code> - установка редактора<br></p>
-  <p><code>git config --list</code> - проверка настроек общая<br></p>
-</ul>
+https://kubernetes.io/ru/docs/reference/kubectl/cheatsheet/
 -->
