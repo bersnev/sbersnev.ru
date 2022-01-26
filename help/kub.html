@@ -130,17 +130,50 @@
 
 <h3>Работа с запущенными подами</h3>
 <ul>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
-  <p><code></code> - </p>
+  <p><code>kubectl logs my-pod</code> - вывести логи пода (в stdout)</p>
+  <p><code>kubectl logs -l name=myLabel</code> - вывести логи пода с меткой myLabel (в stdout)</p>
+  <p><code>kubectl logs my-pod --previous</code> - вывести логи пода (в stdout) по предыдущему экземпляру контейнера</p>
+  <p><code>ubectl logs my-pod -c my-container</code> - вывести логи контейнера пода (в stdout, при работе с несколькими контейнерами)</p>
+  <p><code>kubectl logs -l name=myLabel -c my-container</code> - вывести логи пода с меткой myLabel (в stdout)</p>
+  <p><code>kubectl logs my-pod -c my-container --previous</code> - <br>вывести логи контейнера пода (в stdout, при работе с несколькими контейнерами) по предыдущему экземпляру контейнера</p>
+  <p><code>kubectl logs -f my-pod</code> - вывести логи пода в режиме реального времени (в stdout)</p>
+  <p><code>kubectl logs -f my-pod -c my-container</code> - вывести логи контейнера пода в режиме реального времени (в stdout, при работе с несколькими контейнерами)</p>
+  <p><code>kubectl logs -f -l name=myLabel --all-containers</code> - вывести логи всех подов с меткой myLabel (в stdout)</p>
+  <p><code>kubectl run -i --tty busybox --image=busybox -- sh</code> - запустить под как интерактивную оболочку</p>
+  <p><code>kubectl run nginx --image=nginx --restart=Never -n mynamespace</code> - Запустить под nginx в заданном пространстве имён</p>
+  <p><code>kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml > pod.yaml</code> - <br>Запустить под nginx и записать его спецификацию в файл pod.yaml</p>
+  <p><code>kubectl attach my-pod -i</code> - Прикрепить к запущенному контейнеру</p>
+  <p><code>kubectl port-forward my-pod 5000:6000</code> - Переадресовать порт 5000 в локальной машине на порт 6000 в поде my-pod</p>
+  <p><code>kubectl exec my-pod -- ls /</code> - Выполнить команду в существующем поде (в случае одного контейнера).</p>
+  <p><code>kubectl exec my-pod -c my-container -- ls /</code> - Выполнить команду в существующем поде (в случае нескольких контейнеров)</p>
+  <p><code>kubectl top pod POD_NAME --containers</code> - Показать метрики по заданному поду вместе с его контейнерами</p>
 </ul>
 
+<h3>Работа с узлами и кластером</h3>
+<ul>
+  <p><code>kubectl cordon my-node</code> - Отметить узел my-node как неназначаемый</p>
+  <p><code>kubectl drain my-node</code> - Вытеснить узел my-node, чтобы подготовиться к эксплуатации</p>
+  <p><code>kubectl uncordon my-node</code> - Отметить узел my-node как назначаемый</p>
+  <p><code>kubectl top node my-node</code> - Показать метрики по заданному узлу</p>
+  <p><code>kubectl cluster-info</code> - Показать адреса главного узла и сервисов</p>
+  <p><code>kubectl cluster-info dump</code> - Вывести состояние текущего кластера в stdout</p>
+  <p><code>kubectl cluster-info dump --output-directory=/path/to/cluster-state</code> - Вывести состояние текущего кластера в /path/to/cluster-state</p>
+  <p><code>kubectl taint nodes foo dedicated=special-user:NoSchedule</code> - <br>Если ограничение с заданным ключом и проявлением уже существует, его значение будет заменено указанным</p>
+</ul>
+
+<h3>Типы ресурсов</h3>
+<ul>
+  <p><code>kubectl api-resources</code> - Вывести все поддерживаемые типы ресурсов, включая API-группу, флаг namespaced (организован ли ресурс в пространство имён или нет) и Kind</p>
+  <p><code>kubectl api-resources --namespaced=true</code> - Все ресурсы с пространством имён</p>
+  <p><code>kubectl api-resources --namespaced=false</code> - Все ресурсы без пространства имён</p>
+  <p><code>kubectl api-resources -o name</code> - Все ресурсы с простым выводом  (только имя ресурса)</p>
+  <p><code>kubectl api-resources -o wide</code> - Все ресурсы с расширенным (с неограниченной длинной) выводом</p>
+  <p><code>kubectl api-resources --verbs=list,get</code> - Все ресурсы, которые поддерживают глаголы запроса "list" и "get"</p>
+  <p><code>kubectl api-resources --api-group=extensions</code> - Все ресурсы в API-группе "extensions"</p>
+</ul>
+
+
+  <p>Источник - https://kubernetes.io/ru/docs/reference/kubectl/cheatsheet/</p>
 <!--
 <h3></h3>
 <ul>
@@ -154,6 +187,4 @@
   <p><code></code> - </p>
   <p><code></code> - </p>
 </ul>
-
-https://kubernetes.io/ru/docs/reference/kubectl/cheatsheet/
 -->
