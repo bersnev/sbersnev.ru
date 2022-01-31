@@ -88,7 +88,7 @@
 <h3>Система</h3>
 <ul>
   <p><code>lsb_release -a</code> - получить версию Ubuntu</p>
-  <p><code>ntop</code> - диспетчер задач</p>
+  <p><code>htop</code> - диспетчер задач (можно просто top)</p>
   <p><code>ps -ef | grep 1477</code> - посмотреть процесс</p>
   <p><code>free -h</code> - загрузка памяти</p>
   <p><code>date</code> - отображает текущую дату и время</p>
@@ -102,6 +102,8 @@
   <p><code>hdparm -i /dev/sda</code> - вывести характеристики жесткого диска<br></p>
   <p><code>man ls</code> - help по работе команды ls<br></p>
   <p><code>sudo chmod 777 /var/www/html</code> - дать все права на папку(755 все для владельца, остальным только чтение и выполнение)<br></p>
+  <p><code>chmod a+x script.sh</code> - сделать файл исполняемым<br></p>
+  <p><code>./script.sh</code> - запустить скрипт<br></p>
 </ul>
 
 <h3>Файловые команды</h3>
@@ -114,10 +116,13 @@
   <p><code>rmdir dir1</code> - удалить директорию с именем 'dir1'<br></p>
   <p><code>touch help.txt</code> - создать текстовый файл с именем 'help'<br></p>
   <p><code>rm -f file1</code> - удалить файл с именем 'file1<br></p>
-  <p><code>grep -i serg /user/ubuntu/help.txt</code> - найти пользователя serg в файле<br></p>
+  <p><code>cut -d ">" -f 3 tablica.txt</code> - выводит содержимое 3 столбца в таблице<br></p>
+  <p><code>sort file.txt</code> - выдает на экран содержимое файла в алфавитном порядке<br></p>
+  <p><code>grep serg ./*</code> - найти слово serg и вывести строки, во всех файах в текущей директории<br></p>
+  <p><code>grep -i serg /user/ubuntu/help.txt</code> - найти пользователя serg в файле игнорируя регистр<br></p>
   <p><code>grep -i -B4 serg /user/ubuntu/help.txt</code> - найти пользователя serg в файле и вывести строку с ним<br></p>
   <p><code>grep -r "serg" /user/ubuntu/</code> - найти serg и производные в файлах папки ubuntu и вывести строку с ним<br></p>
-  <p><code>find . -iname "TeStFile*"</code> - Найти в текущей папке файл с именем TeStFile<br></p>
+  <p><code>find . -iname "*.txt"</code> - Найти в текущей папке файл с расширением .txt<br></p>
   <p><code>find / -size +50M -size -100M</code> - Найти файлы от пятидесяти до ста мегабайт<br></p>
   <p><code>tar -cvzf archive.tar.gz /home/test</code> - заархивировать папку test<br></p>
   <p><code>tar -xvf archive.tar.gz</code> - разархивировать файл archive.tar.gz<br></p>
