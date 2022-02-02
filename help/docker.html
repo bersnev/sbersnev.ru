@@ -48,77 +48,69 @@
         <h1>Команды Docker</h1>
     </div>
 
-
-    <p></p><h3>Создание образа</h3>
+<h3>Введение</h3>
 <ul>
-  <li>
-  <p><code>docker pull ОБРАЗ</code> - загружает образ из Docker Hub (аналог GitHub для Docker)</p></li>
-  <li>
-    <p><code>docker build ПУТЬ | URL</code> - создает образ с помощью Dockerfile<br><strong>Параметры:</strong></p>
-    <ul>
-      <li><code>-t</code> | <code>--tag=""</code> - помечает созданный образ переданным названием (и, тэгом, если он будет передан)</li>
-      <li><code>--rm</code> - Удаляет промежуточные контейнеры после успешной сборки (по умолчанию == true)</li>
-    </ul>
-  </li>
+  <p>Docker Container - Мини виртуальная машина.</p>
+  <p>Docker Image - Образ докер контейнера</p>
+  <p>Dockerfile - файл с описанием докер образа</p>
+  <p><a href="https://hub.docker.com/search?type=image" target="_blank">DockerHub</a> - ресурс для скачивания docker image</p>
 </ul>
 
-<h3>Управление образами</h3>
+<h3>Установка</h3>
 <ul>
-  <li>
-    <p><code>docker rmi</code> - Удаляет образ, образ не может быть удален, если существуют контейнеры (даже незапущенные), которые основаны<br>на данном образе<br><strong>Параметры:</strong></p>
-    <ul>
-      <li><code>-f</code> - позволяет удалить образ даже если на нём основаны контейнеры</li>
-    </ul>
-  </li>
-  <li>
-    <p><code>docker images</code> - Отображает список всех существующих образов<br><strong>Параметры:</strong></p>
-    <ul>
-      <li><code>-a</code> | <code>--all</code> - отображает все образы (по умолчанию не отображает промежуточные контейнеры)</li>
-      <li><code>-q</code> - отображает только id образов, вместо таблицы</li>
-    </ul>
-  </li>
+  <p><code>sudo apt update</code> - Перед установкой обновляеем данные о пакетах операционной системы</p>
+  <p><code>sudo apt install apt-transport-https</code> - активирует передачу файлов и данных через https</p>
+  <p><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code> - <br>Добавляем в систему GPG-ключ для работы с официальным репозиторием Docker</p>
+  <p><code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code> - <br>Добавляем репозиторий Docker в локальный список репозиториев(после этого необходимо заново обновить данные о пакетах ОС)</p>
+  <p><code>sudo apt install docker-ce -y</code> - Установка пакета Docker</p>
+  <p><code>sudo systemctl status docker</code> - Проверка работы сервиса</p>
+  <p><code>docker -v</code> - Проверка версии докера</p>
+  <p><code>sudo usermod -aG docker $USER</code> - Добавление в группу чтоб запускать команды без sudo(необходимо переконнектиться к ВМ!)</p>
+  <p><code>sudo systemctl start docker</code> - Запускаем демон Docker</p>
+  <p><code>sudo systemctl enable docker</code> - Добавляем демон в автозагрузку</p>
 </ul>
 
-<h3>Запуск и остановка контейнеров</h3>
+<h3>Команды Docker</h3>
 <ul>
-  <li>
-    <p><code>docker run ОБРАЗ [КОМАНДА + АРГУМЕНТЫ]</code> - Запускает выбранный образ в новом контейнере<br><strong>Параметры:</strong></p>
-    <ul>
-      <li><code>-d</code> | <code>--detach</code> - запускает контейнер в фоновом режиме и выводит только id свежесозданного контейнера. (по умолчанию == <code>false</code>)</li>
-      <li><code>-i</code> | <code>--interactive</code> - запускает контейнер в интерактивном режиме (оставляет STDIN открытым, даже если контейнер запущен в неприкрепленном режиме)</li>
-      <li><code>-t</code> | <code>--tty</code> - запускает псевдотерминал, часто используется с <code>-i</code></li>
-      <li><code>-p</code> | <code>--publish=[]</code> - пробрасывает порты контейнера в хост. Формат: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort</li>
-      <li><code>-e</code> | <code>--env=[]</code> - пробрасывает переменные окружения внутрь контейнера.</li>
-      <li><code>-v</code> | <code>--volume=[]</code> - пробрасывает директорию файловой системы внутрь контейнера</li>
-    </ul>
-  </li>
-  <li>
-  <p><code>docker stop КОНТЕЙНЕР</code> - останавливает контейнер, передавая внутрь SIGTERM, а по истечении таймаута - SIGKILL</p></li>
-  <li><code>docker start КОНТЕЙНЕР</code> - запускает остановленный контейнер.<br><strong>Параметры:</strong>
-    <ul>
-      <li><code>-i</code> | <code>--interactive</code> - аналогично docker run -i</li>
-    </ul>
-  </li>
-  <li><code>docker restart КОНТЕЙНЕР</code> - Перезапускает выбранный контейнер с помощью docker stop и docker start</li>
-  <li><code>docker kill КОНТЕЙНЕР</code> - Убивает контейнер, передавая внутрь SIGKILL</li>
+  <p><code>docker ps</code> - отображает список запущенных контейнеров</p>
+  <p><code>docker ps -a</code> - отображает список всех контейнеров которые работали</p>
+  <p><code>docker images</code> - Отображает список всех существующих образов</p>
+  <p><code>docker search ubuntu</code> - поиск образа ubuntu в удаленном репозитории</p>
+  <p><code>docker pull ubuntu</code> - скачивание образа на локальную машину</p>
+  <p><code>docker run -it -p 1234:80 ubuntu</code> - интерактивный запуск контейнера на порту 1234</p>
+  <p><code>docker run -d -p 8888:80 nginx</code> - запуск контейнера на порту 8888</p>
+  <p><code>docker rm 798hergh435hjj34jk</code> - удаление контейнера по conteiner id</p>
+  <p><code>docker rmi 798hergh435hjj34jk</code> - удаление образа по image id</p>
+  <p><code>docker exec -ti 798hergh435hjj34jk bash</code> - зайти в работающий контейнер</p>
+  <p><code>docker logs -f 798hergh435hjj34jk</code> - просмотр логов запущенного контейнера</p>
+  <p><code>docker port 798hergh435hjj34jk</code> - показать экспортированные порты</p>
+  <p><code>docker stop 798hergh435hjj34jk</code> - остановить работающий контейнер</p>
+
 </ul>
 
-<h3>Управление контейнерами</h3>
+<h3>Создание образа</h3>
 <ul>
-  <li><code>docker port КОНТЕЙНЕР</code> - отображает маппинг портов между хостом и контейнером</li>
-  <li><code>docker ps</code> - отображает список запущенных контейнеров<br><strong>Параметры:</strong>
-    <ul>
-      <li><code>-a</code> | <code>--all=(true|false)</code> - отображать ли все контейнеры. По умолчанию == <code>false</code>, т.е. отображаются только запущенные контейнеры</li>
-      <li><code>-q</code> - отображает только ID контейнеров вместо таблицы</li>
-    </ul>
-  </li>
-  <li><code>docker rm КОНТЕЙНЕР</code> - удаляет контейнер. По умолчанию можно удалить только запущенный контейнер.<br><strong>Параметры:</strong>
-    <ul>
-      <li><code>-f</code> | <code>--force=(true|false)</code> - позволяет удалить запущенный контейнер. Используется передача SIGKILL внутрь.</li>
-    </ul>
-  </li>
-  <li><code>docker diff</code> - отображает изменения относительно образа.</li>
+  <p>Dockerfile служит скриптом сборки для команды docker build. Перед началом сборки docker передает сборщику всё содержимое папки с Dockerfile'ом</p>
+  <p>Создадим Dockerfile - <code>vim Dockerfile</code></p>
+
+<pre><code>#---------------------------------------------------------------------------
+# Dockefile to build Docker Image of Apache WebServer running on Ubuntu
+#---------------------------------------------------------------------------
+
+FROM ubuntu:16.04
+
+RUN apt-get -y update
+RUN apt-get -y install apache2
+
+RUN echo 'Hello World from Docker!' > /var/www/html/index.html
+
+CMD ["/usr/sbin/apache2ctl", "-D","FOREGROUND"]   #запуск сервера на бэкграунде
+EXPOSE 80</code></pre>
+
+  <p><code>docker build -t bersnev:v.1.0 .</code> - Собираем образ из текущей директории с тагом v.1.0</p>
+  <p><code>docker run -d -p  7777:80  bersnev:v.1.0</code> - запускаем наш образ как демон</p>
 </ul>
+
 
 <h3>Синтаксис Dockerfile</h3>
 <p>Dockerfile служит скриптом сборки для команды <code>docker build</code>. Перед началом сборки docker передает сборщику всё содержимое папки с Dockerfile'ом,<br>поэтому располагать его в корневой директории системы будет не лучшей идеей.</p>
@@ -152,3 +144,23 @@
   <li>
   <p><code>WORKDIR ПУТЬ</code> - задает рабочую директорию для команд <code>RUN</code>, <code>CMD</code> и <code>ENTRYPOINT</code>. Инструкция может быть использована несколько раз. Если ПУТЬ относителен, то он будет относительным для ПУТИ, заданным предыдущей инструкцией <code>WORKDIR</code>.</p></li>
 </ul>
+
+<!--
+
+<h3></h3>
+<ul>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+</ul>
+
+<pre><code>
+</code></pre>
+
+-->
