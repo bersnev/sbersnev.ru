@@ -139,6 +139,7 @@
   <p><code>kubectl get pods  -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}' | xargs  kubectl delete -n mynamespace pod</code> - <br>Удалить все поды, соответствующие pattern1 или pattern2 в awk</p>
 </ul>
 
+
 <h3>Работа с запущенными подами</h3>
 <ul>
   <p><code>kubectl logs my-pod</code> - вывести логи пода (в stdout)</p>
