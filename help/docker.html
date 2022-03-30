@@ -80,6 +80,8 @@
   <p><code>docker run -it -p 1234:80 ubuntu</code> - интерактивный запуск контейнера на порту 1234</p>
   <p><code>docker run -d -p 8888:80 nginx</code> - запуск контейнера на порту 8888</p>
   <p><code>docker rm 798hergh435hjj34jk</code> - удаление контейнера по conteiner id</p>
+  <p><code>docker diff 798hergh435hjj34jk</code> - просмотр процесса выполнения в контейнере</p>
+  <p><code>docker inspect 798hergh435hjj34jk | less</code> - просмотр сведений о контейнере</p>  
   <p><code>docker rmi 798hergh435hjj34jk</code> - удаление образа по image id</p>
   <p><code>docker exec -ti 798hergh435hjj34jk bash</code> - зайти в работающий контейнер</p>
   <p><code>docker logs -f 798hergh435hjj34jk</code> - просмотр логов запущенного контейнера</p>
