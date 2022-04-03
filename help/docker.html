@@ -81,7 +81,7 @@
   <p><code>docker run -d -p 8888:80 nginx</code> - запуск контейнера на порту 8888</p>
   <p><code>docker rm 798hergh435hjj34jk</code> - удаление контейнера по conteiner id</p>
   <p><code>docker diff 798hergh435hjj34jk</code> - просмотр процесса выполнения в контейнере</p>
-  <p><code>docker inspect 798hergh435hjj34jk | less</code> - просмотр сведений о контейнере</p>  
+  <p><code>docker inspect 798hergh435hjj34jk | less</code> - просмотр сведений о контейнере</p>
   <p><code>docker rmi 798hergh435hjj34jk</code> - удаление образа по image id</p>
   <p><code>docker exec -ti 798hergh435hjj34jk bash</code> - зайти в работающий контейнер</p>
   <p><code>docker logs -f 798hergh435hjj34jk</code> - просмотр логов запущенного контейнера</p>
@@ -121,6 +121,16 @@ EXPOSE 80</code></pre>
 ИНСТРУКЦИЯ аргументы
 </code></pre>
 <p>Первая инструкция обязательно должна быть инструкцией FROM.</p>
+
+<p>Ппример Dockerfile</p>
+<pre><code>FROM python:3.7
+WORKDIR /usr/src/
+COPY ./requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt && apt-get clean
+COPY ./ ./
+RUN chmod 777 /usr/src/boot.sh
+</code></pre>
+
 <p>Инструкции:</p>
 <ul>
   <li>
