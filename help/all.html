@@ -20,6 +20,12 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="https://sbersnev.ru/help.html">Главная</a>
         </div>
         <div class="navbar-collapse collapse">
@@ -31,20 +37,24 @@
               <li><a href="https://sbersnev.ru/help/bash.html">Bash</a></li>
               <li><a href="https://sbersnev.ru/help/ansible.html">Ansible</a></li>
               <li><a href="https://sbersnev.ru/help/cc.html">Cloud comparison</a></li>
-              <li><a href="https://sbersnev.ru/help/all.html">Команды</a></li>
+              <li><a href="https://sbersnev.ru/help/all.html">Cloud comparison</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>    <div class="container">
     <div class="page-header">
-        <h1>Команды Git</h1>
-    </div>
+        <h1>Шпора</h1>
+      </div>
 
-    <p></p><h3>Установка</h3>
+    <p></p><h3>sql</h3>
 <ul>
-
-    <p><code>sudo apt-get update</code></p>
-    <p><code>sudo apt-get install git</code><br></p>
+  <p><code>show databases;</code> - показать доступные БД</p>
+  <p><code>drop database magento2;</code> - удалить БД magento2</p>
+  <p><code>CREATE DATABASE magento2;</code> - создать БД magento2</p>
+  <p><code>USE magento2;</code> - выбрать БД для дальнейшей работы</p>
+  <p><code>SHOW TABLES;</code> - просмотреть все таблицы</p>
+  <p><code>zcat /home/belleze/backup/dev_2022-04-25_120213.sql.gz | mysql -u 'root' magento2</code> - восстановить БД из бэкапа</p>
+  <p><code>sudo mysqldump -v -p magento2 | gzip > /home/ubuntu/magento2_27_04_22.sql.gz</code> - создать бэкап БД</p>
 </ul>
 
 <h3>Первоначальные настройки</h3>
@@ -55,22 +65,22 @@
   <p><code>git config --list</code> - проверка настроек общая<br></p>
 </ul>
 
+<!--
 
-<h3>Общие команды</h3>
+<h3></h3>
 <ul>
-  <p><code>git init</code> - инициализация</p>
-  <p><code>git status</code> - список незакомиченных файлов</p>
-  <p><code>git add .</code> - добавление к будущему комиту</p>
-  <p><code>git commit -m "комментарий к комиту"</code> - коммит<br></p>
-  <p><code>git push</code> или <code>git push origin master</code> - пуш коммита в удаленный репозиторий<br></p>
-  <p><code>git fetch</code> - скачать изменения из удаленного репозитория<br></p>
-  <p><code>git pull</code> - скачать изменения из удаленного репозитория и смержить<br></p>
-  <p><code>git checkout -B master origin/master</code> - Привести ветку в состояние удаленного репозитория !!! Осторожно, удалит все локальные коммиты, которых нет в удаленной ветке<br></p>
-  <p><code>git branch new-branch</code> - создание ветки<br></p>
-  <p><code>git checkout new-branch</code> - переключение на ветку</p>
-  <p><code>git branch -d branch-name</code> - удаление ветки<br></p>
-  <p><code>git branch -m old_name new_name</code> - переименование ветки<br></p>
-  <p><code>git branch -v</code> - просмотр веток</p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
+  <p><code></code> - </p>
 </ul>
 
-<img src="img/git.svg">
+<pre><code>
+</code></pre>
+
+-->
