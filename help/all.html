@@ -57,12 +57,13 @@
   <p><code>sudo mysqldump -v -p magento2 | gzip > /home/ubuntu/magento2_27_04_22.sql.gz</code> - создать бэкап БД</p>
 </ul>
 
-<h3>Первоначальные настройки</h3>
+<h3>apache2</h3>
 <ul>
-  <p><code>git config --global user.name "Bersnev Sergey"</code> - имя пользователя</p>
-  <p><code>git config --global user.email bersnev@tut.by</code> - e-mail<br></p>
-  <p><code>git config --global core.editor "code --wait"</code> - установка редактора<br></p>
-  <p><code>git config --list</code> - проверка настроек общая<br></p>
+  <p><code>sudo systemctl status apache2</code> - состояние службы apache2</p>
+  <p><code>sudo systemctl restart apache2</code> - перезагрузка службы apache2<br></p>
+  <p><code>sudo systemctl reload apache2.service</code> - перезагрузка конфигурации apache2<br></p>
+  <p><code>sudo apache2ctl configtest</code> - проверка настроек apache2<br></p>
+  <p><code>sudo a2enmod ssl</code> - добавление моделя для ssl<br></p>
 </ul>
 
 <!--
